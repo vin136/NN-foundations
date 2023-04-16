@@ -1,3 +1,18 @@
+Notes from building make-more part3
+
+- Bad initial loss: logits at initialization should be small values(equal) => use no bias + small weights
+But can we set our inittal weights to 0 ? 
+
+Fixing tanh activations =>
+
+DEAD NEURON => IF THE GRAD OF THAT NEURON IS ZERO FOR ALL THE SAMPLES (CAN HAPPEN FOR ANY ACTIVATION). hOW IT CAN HAPPEN => A. CAN HAPPEN DURING INITIALIZATION B. Optimization => if high train loss/grad update some of the neurons might never get activated for any train example and they will remain same for the rest of the training. not a problem for (leakyrelu)
+
+Much better optimizers,normalization layers and residual connections. with these we can go by initializing with divide by sqrt(fanin).no need to be super exact.
+
+batch-norm = solves the dead relu prob directly. motif: (conv/linear(no need bias here) + batchnorm + activation)
+residual network/blocks = 
+
+
 1. Why its better to use cross-entropy than implement our own loss ?
 
 ans: 
